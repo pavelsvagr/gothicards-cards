@@ -1,5 +1,2 @@
-src/serviceWorker.js
-src/index.tsx
 node_modules
-build
-public
+dist

@@ -1,4 +1,4 @@
-import {CardDefinition} from '../../definitions'
+import { CardDefinition } from '../../definitions'
 import {
     AttackTypes,
     BaseTargets,
@@ -6,7 +6,7 @@ import {
     CardType,
     EffectTypes,
     Fractions,
-    Guilds, 
+    Guilds,
     ItemTypes,
 } from '../../enums'
 
