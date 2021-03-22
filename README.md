@@ -3,7 +3,7 @@
 # Gothicards Card definitions
 Card definitions and typings for card game inspired by RPG Gothic.  
 
-</div
+</div>
 
 ## ✏️ Definitions
 All definitions are under [cards folder](./src/lib/cards). Possible attributes 
