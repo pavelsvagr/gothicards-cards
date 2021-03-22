@@ -8,6 +8,7 @@ import { AttackTypes, StatusTypes } from './enums'
 interface ImmunityStatus {
   type: StatusTypes.Immunity
   to?: AttackTypes
+  text?: string
 }
 
 export type Status = ImmunityStatus

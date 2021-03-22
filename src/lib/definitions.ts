@@ -54,7 +54,7 @@ export interface UnitCardProps {
   slots?: Slots
   damageType?: DamageTypes
   deathType?: DeathTypes
-  statuses?: Status
+  statuses?: Status[]
   health: number
   armor: number
   defence: number
