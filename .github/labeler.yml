@@ -1,0 +1,17 @@
+interfaces:
+- any: ['src/lib/*.ts']
+
+cards:
+- any: ['src/lib/cards/**/*.ts']
+
+units:
+- any: ['src/lib/cards/units/*.ts']
+
+buildings:
+- any: ['src/lib/cards/buildings/*.ts']
+
+effects:
+- any: ['src/lib/cards/effects/*.ts']
+
+items:
+- any: ['src/lib/cards/items/*.ts']
