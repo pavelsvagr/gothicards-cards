@@ -1,4 +1,4 @@
-import { CardDefinition } from '../../definitions'
+import { CardDefinition } from 'lib/definitions'
 import {
   AttackTypes,
   CardRarity,
@@ -8,26 +8,27 @@ import {
   Guilds,
   ItemTypes,
   Sides,
-} from '../../enums'
+} from 'lib/enums'
 import descriptions from '../texts/units'
+import { COUNT_ALL } from '../../effects'
 
 const card: CardDefinition = {
   type: CardType.Unit,
-  name: 'Goblin',
-  slug: 'goblin',
-  rarity: CardRarity.Bronze,
-  cost: 3,
   fraction: Fractions.Monsters,
-  description: descriptions.goblin,
+  name: 'Black Goblin',
+  slug: 'blackGoblin',
+  cost: 5,
+  rarity: CardRarity.Bronze,
+  description: descriptions.blackGoblin,
   attributes: {
     guilds: [Guilds.Goblin],
     slots: {
       count: 1,
       canEquip: [ItemTypes.MeleeWeapon],
     },
-    defence: 1,
-    health: 2,
+    defence: 2,
     armor: 0,
+    health: 3,
     attacks: [
       {
         type: AttackTypes.Melee,
@@ -40,13 +41,13 @@ const card: CardDefinition = {
   effects: {
     onPlay: [
       {
-        type: EffectTypes.Damage,
-        text: '[Deal 1 damage|damage] to one enemy unit.',
+        type: EffectTypes.Boost,
+        text: '[Boost|positive] all allied [goblins|highlight] by 1.',
         targets: {
-          cardType: CardType.Unit,
-          side: Sides.Enemies,
+          guilds: [Guilds.Goblin],
+          side: Sides.Allies,
         },
-        count: 1,
+        count: COUNT_ALL,
         value: 1,
       },
     ],

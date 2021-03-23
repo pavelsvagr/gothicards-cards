@@ -6,48 +6,44 @@ import {
   EffectTypes,
   Fractions,
   Guilds,
-  ItemTypes,
   Sides,
 } from '../../enums'
 import descriptions from '../texts/units'
+import { COUNT_ALL } from '../../effects'
 
 const card: CardDefinition = {
   type: CardType.Unit,
-  name: 'Goblin',
-  slug: 'goblin',
-  rarity: CardRarity.Bronze,
-  cost: 3,
+  name: 'Swamp Golem',
+  slug: 'swampGolem',
+  rarity: CardRarity.Gold,
+  cost: 9,
   fraction: Fractions.Monsters,
-  description: descriptions.goblin,
+  description: descriptions.swampGolem,
   attributes: {
-    guilds: [Guilds.Goblin],
-    slots: {
-      count: 1,
-      canEquip: [ItemTypes.MeleeWeapon],
-    },
-    defence: 1,
-    health: 2,
+    guilds: [Guilds.Insect],
+    defence: 3,
+    health: 6,
     armor: 0,
     attacks: [
       {
         type: AttackTypes.Melee,
-        text: 'Strike',
-        cost: 1,
-        damage: 1,
+        text: 'Punch',
+        cost: 2,
+        damage: 4,
       },
     ],
   },
   effects: {
     onPlay: [
       {
-        type: EffectTypes.Damage,
-        text: '[Deal 1 damage|damage] to one enemy unit.',
+        type: EffectTypes.Boost,
+        text: '[Boost|positive] all [insect|highlight] units by 1.',
         targets: {
-          cardType: CardType.Unit,
           side: Sides.Enemies,
+          guilds: [Guilds.Insect],
         },
-        count: 1,
         value: 1,
+        count: COUNT_ALL,
       },
     ],
   },

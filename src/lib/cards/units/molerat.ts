@@ -6,48 +6,41 @@ import {
   EffectTypes,
   Fractions,
   Guilds,
-  ItemTypes,
   Sides,
+  Signs,
 } from '../../enums'
 import descriptions from '../texts/units'
 
 const card: CardDefinition = {
   type: CardType.Unit,
-  name: 'Goblin',
-  slug: 'goblin',
+  name: 'Molerat',
+  slug: 'molerat',
   rarity: CardRarity.Bronze,
   cost: 3,
   fraction: Fractions.Monsters,
-  description: descriptions.goblin,
+  description: descriptions.molerat,
   attributes: {
-    guilds: [Guilds.Goblin],
-    slots: {
-      count: 1,
-      canEquip: [ItemTypes.MeleeWeapon],
-    },
+    guilds: [Guilds.Beast],
     defence: 1,
-    health: 2,
+    health: 3,
     armor: 0,
     attacks: [
       {
         type: AttackTypes.Melee,
-        text: 'Strike',
+        text: 'Bite',
         cost: 1,
         damage: 1,
       },
     ],
   },
   effects: {
-    onPlay: [
+    onDeath: [
       {
-        type: EffectTypes.Damage,
-        text: '[Deal 1 damage|damage] to one enemy unit.',
-        targets: {
-          cardType: CardType.Unit,
-          side: Sides.Enemies,
-        },
-        count: 1,
-        value: 1,
+        type: EffectTypes.Energy,
+        text: '[Gain|energy] 1 energy.',
+        side: Sides.Allies,
+        amount: 1,
+        sign: Signs.add,
       },
     ],
   },

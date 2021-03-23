@@ -20,6 +20,7 @@ export enum Fractions {
 
 export enum DamageTypes {
   Strike = 'strike',
+  Poison = 'poison',
   Rocks = 'rocks',
   Fire = 'fire',
 }
@@ -58,6 +59,7 @@ export enum EffectTypes {
   Boost = 'boost',
   Heal = 'heal',
   Strengthen = 'strengthen',
+  Eat = 'eat',
   Resurrect = 'resurrect',
   Energy = 'energy',
   Spawn = 'spawn',

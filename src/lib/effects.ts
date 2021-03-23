@@ -15,6 +15,9 @@ import { ConditionDefinition } from './conditions'
 
 export const EFFECT_COMBINATION = 'combination'
 export const EFFECT_SELECTION = 'selection'
+export const COUNT_ALL = 'all'
+
+type Count = number | typeof COUNT_ALL
 
 /**
  * Attacks are used during each round and cost player energy.
@@ -79,7 +82,7 @@ interface BaseEffect {
 
 interface TargetEffect extends BaseEffect {
   targets: BaseTargets | TargetDefinition
-  count: number
+  count: Count
   random?: RandomDefinition
 }
 
@@ -99,6 +102,14 @@ interface BoostEffectDefinition extends TargetValueEffect {
  */
 interface DamageEffectDefinition extends TargetValueEffect {
   type: EffectTypes.Damage
+}
+
+/**
+ * Removes value from unit's or building's actual health and boost self.
+ */
+interface EatEffectDefinition extends TargetValueEffect {
+  type: EffectTypes.Eat
+  boost: number
 }
 
 /**
@@ -138,6 +149,7 @@ interface SpawnEffectDefinition extends BaseEffect {
   type: EffectTypes.Spawn
   side: Sides
   spawn: CardDefinition
+  count: number
 }
 
 /**
@@ -167,13 +179,22 @@ type RawEffect =
   | ResetEffectDefinition
   | ResurrectEffectDefinition
   | TransformEffectDefinition
+  | EatEffectDefinition
+
+type CombinationEffect =
+  | Omit<BoostEffectDefinition, 'targets' | 'count'>
+  | Omit<DamageEffectDefinition, 'targets' | 'count'>
+  | Omit<HealEffectDefinition, 'targets' | 'count'>
+  | Omit<StrengthenEffectDefinition, 'targets' | 'count'>
+  | Omit<ResetEffectDefinition, 'targets' | 'count'>
+  | Omit<TransformEffectDefinition, 'targets' | 'count'>
 
 /**
  * Applies all target effects at once.
  */
 interface EffectCombination extends TargetEffect {
   type: typeof EFFECT_COMBINATION
-  effects: Array<Omit<TargetEffect, 'targets' | 'condition'>>
+  effects: CombinationEffect[]
 }
 
 /**

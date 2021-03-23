@@ -1,4 +1,4 @@
-enum TextType {
+export enum TextType {
   Quote,
 }
 

@@ -1,32 +1,32 @@
 import { CardDefinition } from '../../definitions'
 import {
   AttackTypes,
+  BaseTargets,
   CardRarity,
   CardType,
   EffectTypes,
   Fractions,
   Guilds,
   ItemTypes,
-  Sides,
 } from '../../enums'
 import descriptions from '../texts/units'
 
 const card: CardDefinition = {
   type: CardType.Unit,
-  name: 'Goblin',
-  slug: 'goblin',
+  name: 'Goblin Skeleton',
+  slug: 'goblinSkeleton',
   rarity: CardRarity.Bronze,
   cost: 3,
   fraction: Fractions.Monsters,
-  description: descriptions.goblin,
+  description: descriptions.goblinSkeleton,
   attributes: {
-    guilds: [Guilds.Goblin],
+    guilds: [Guilds.Goblin, Guilds.Undead],
     slots: {
       count: 1,
       canEquip: [ItemTypes.MeleeWeapon],
     },
     defence: 1,
-    health: 2,
+    health: 0,
     armor: 0,
     attacks: [
       {
@@ -40,14 +40,11 @@ const card: CardDefinition = {
   effects: {
     onPlay: [
       {
-        type: EffectTypes.Damage,
-        text: '[Deal 1 damage|damage] to one enemy unit.',
-        targets: {
-          cardType: CardType.Unit,
-          side: Sides.Enemies,
-        },
+        type: EffectTypes.Boost,
+        text: '[Gain 4 health|positive]',
+        targets: BaseTargets.Self,
         count: 1,
-        value: 1,
+        value: 4,
       },
     ],
   },
