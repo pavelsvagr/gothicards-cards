@@ -16,7 +16,7 @@ const card: CardDefinition = {
   name: 'Goblin Skeleton',
   slug: 'goblinSkeleton',
   rarity: CardRarity.Bronze,
-  cost: 3,
+  cost: 4,
   fraction: Fractions.Monsters,
   description: descriptions.goblinSkeleton,
   attributes: {
@@ -33,7 +33,7 @@ const card: CardDefinition = {
         type: AttackTypes.Melee,
         text: 'Strike',
         cost: 1,
-        damage: 1,
+        damage: 2,
       },
     ],
   },
