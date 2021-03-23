@@ -73,7 +73,7 @@ export interface UnitCardProps {
 export interface BuildingCardProps {
   damageType?: DamageTypes
   deathType?: DeathTypes
-  statuses?: Status
+  statuses?: Status[]
   health: number
   armor: number
 }

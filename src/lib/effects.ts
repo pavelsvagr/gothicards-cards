@@ -51,6 +51,7 @@ export interface TargetDefinition {
   collection?: Collections
   cardType?: CardType
   cardSlug?: string
+  newCard?: true
   side: Sides
 }
 

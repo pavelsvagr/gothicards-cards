@@ -1,48 +1,58 @@
+import { CardDefinition } from '../../definitions'
 import {
-  CARD_TARGET_NEW,
-  CardDef,
-  TARGET_ALLIES,
-} from "../../objects/definitions/card"
+  CardRarity,
+  CardType,
+  DeathTypes,
+  EffectTypes,
+  Fractions,
+  Guilds,
+  Sides,
+  StatusTypes,
+} from '../../enums'
+import descriptions from '../texts/buildings'
 
-const card: CardDef = {
-  name: "Old Cave",
+const card: CardDefinition = {
+  type: CardType.Building,
+  fraction: Fractions.Monsters,
+  name: 'Old Cave',
+  slug: 'oldCave',
   cost: 6,
-  rarity: "silver",
-  type: "building",
-  image: "oldCave",
-  description: "Place that only fool can visit alone.",
-  props: {
-    fraction: "Monsters",
+  rarity: CardRarity.Silver,
+  description: descriptions.oldCave,
+  attributes: {
     health: 1,
+    armor: 0,
+    deathType: DeathTypes.Ruin,
     statuses: [
       {
-        type: "immunity",
-        against: "all",
+        type: StatusTypes.Immunity,
         text: "Can't be attacked",
       },
     ],
-    deathType: "building",
+  },
+  effects: {
     onTurnEnd: [
       {
-        text: "When you play [goblin|highlight], [boost|positive] it by 1.",
-        name: "boost",
+        type: EffectTypes.Boost,
+        text: 'When you play [goblin|highlight], [boost|positive] it by 1.',
         targets: {
-          side: TARGET_ALLIES,
-          card: CARD_TARGET_NEW,
-          guild: "goblin",
+          side: Sides.Allies,
+          newCard: true,
+          guilds: [Guilds.Goblin],
         },
         count: 1,
         value: 1,
       },
       {
-        text: "[Heal|positive] random allied [beast|highlight] by 1.",
-        name: "boost",
+        type: EffectTypes.Heal,
+        text: '[Heal|positive] random allied [beast|highlight] by 1.',
         targets: {
-          side: TARGET_ALLIES,
-          card: CARD_TARGET_NEW,
-          guild: "beast",
+          side: Sides.Allies,
+          guilds: [Guilds.Beast],
         },
-        random: true,
+        random: {
+          repeat: false,
+        },
         count: 1,
         value: 1,
       },
