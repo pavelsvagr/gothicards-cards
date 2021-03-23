@@ -21,7 +21,7 @@ const card: CardDefinition = {
   attributes: {
     guilds: [Guilds.Beast],
     defence: 1,
-    health: 3,
+    health: 4,
     armor: 0,
     attacks: [
       {
