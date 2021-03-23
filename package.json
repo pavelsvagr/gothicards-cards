@@ -1,6 +1,6 @@
 {
   "name": "gothicards-cards",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Card definitions for card game inspired by RPG Gothic",
   "main": "./dist/main.js",
   "files": [
