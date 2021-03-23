@@ -1,17 +1,20 @@
-interfaces:
-- any: ['src/lib/*.ts']
+interfaces: 
+  - any: ['src/lib/*.ts']
 
-cards:
-- any: ['src/lib/cards/**/*.ts']
+cards: 
+  - any: ['src/lib/cards/**/*.ts']
 
-units:
-- any: ['src/lib/cards/units/*.ts']
+units: 
+  - any: ['src/lib/cards/units/*.ts']
 
-buildings:
-- any: ['src/lib/cards/buildings/*.ts']
+buildings: 
+  - any: ['src/lib/cards/buildings/*.ts']
 
-effects:
-- any: ['src/lib/cards/effects/*.ts']
+effects: 
+  - any: ['src/lib/cards/effects/*.ts']
 
-items:
-- any: ['src/lib/cards/items/*.ts']
+items: 
+  - any: ['src/lib/cards/items/*.ts']
+
+texts: 
+  - any: ['src/lib/cards/texts/*.ts']
