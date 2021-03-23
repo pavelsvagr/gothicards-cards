@@ -1,53 +1,48 @@
-import { CardDefinition } from '../../definitions'
 import {
   AttackTypes,
+  BaseTargets,
   CardRarity,
   CardType,
   EffectTypes,
   Fractions,
   Guilds,
-  ItemTypes,
-  Sides,
 } from '../../enums'
 import descriptions from '../texts/units'
+import { CardDefinition } from '../../definitions'
 
 const card: CardDefinition = {
   type: CardType.Unit,
-  name: 'Goblin',
-  slug: 'goblin',
-  rarity: CardRarity.Bronze,
-  cost: 3,
   fraction: Fractions.Monsters,
-  description: descriptions.goblin,
+  cost: 4,
+  name: 'Bloodfly',
+  slug: 'bloodfly',
+  rarity: CardRarity.Bronze,
+  description: descriptions.bloodfly,
   attributes: {
-    guilds: [Guilds.Goblin],
-    slots: {
-      count: 1,
-      canEquip: [ItemTypes.MeleeWeapon],
-    },
+    guilds: [Guilds.Insect],
     defence: 1,
     health: 2,
     armor: 0,
     attacks: [
       {
         type: AttackTypes.Melee,
-        text: 'Strike',
+        text: 'Sting',
         cost: 1,
         damage: 1,
       },
     ],
   },
   effects: {
-    onPlay: [
+    onTurnEnd: [
       {
         type: EffectTypes.Damage,
-        text: '[Deal 1 damage|damage] to one enemy unit.',
-        targets: {
-          cardType: CardType.Unit,
-          side: Sides.Enemies,
-        },
+        text: '[Deal 1 damage|damage] to one random enemy unit.',
+        targets: BaseTargets.Enemies,
         count: 1,
         value: 1,
+        random: {
+          repeat: false,
+        },
       },
     ],
   },

@@ -6,32 +6,28 @@ import {
   EffectTypes,
   Fractions,
   Guilds,
-  ItemTypes,
   Sides,
 } from '../../enums'
 import descriptions from '../texts/units'
+import { COUNT_ALL } from '../../effects'
 
 const card: CardDefinition = {
   type: CardType.Unit,
-  name: 'Goblin',
-  slug: 'goblin',
+  name: 'Scavenger',
+  slug: 'scavenger',
   rarity: CardRarity.Bronze,
   cost: 3,
   fraction: Fractions.Monsters,
-  description: descriptions.goblin,
+  description: descriptions.scavenger,
   attributes: {
-    guilds: [Guilds.Goblin],
-    slots: {
-      count: 1,
-      canEquip: [ItemTypes.MeleeWeapon],
-    },
+    guilds: [Guilds.Beast],
     defence: 1,
-    health: 2,
+    health: 3,
     armor: 0,
     attacks: [
       {
         type: AttackTypes.Melee,
-        text: 'Strike',
+        text: 'Bite',
         cost: 1,
         damage: 1,
       },
@@ -40,14 +36,14 @@ const card: CardDefinition = {
   effects: {
     onPlay: [
       {
-        type: EffectTypes.Damage,
-        text: '[Deal 1 damage|damage] to one enemy unit.',
+        type: EffectTypes.Boost,
+        text: '[Boost|positive] all other scavengers by 2.',
         targets: {
-          cardType: CardType.Unit,
-          side: Sides.Enemies,
+          cardSlug: 'scavenger',
+          side: Sides.Allies,
         },
-        count: 1,
-        value: 1,
+        value: 2,
+        count: COUNT_ALL,
       },
     ],
   },

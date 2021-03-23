@@ -3,51 +3,51 @@ import {
   AttackTypes,
   CardRarity,
   CardType,
+  DamageTypes,
   EffectTypes,
   Fractions,
   Guilds,
-  ItemTypes,
   Sides,
 } from '../../enums'
 import descriptions from '../texts/units'
 
 const card: CardDefinition = {
   type: CardType.Unit,
-  name: 'Goblin',
-  slug: 'goblin',
-  rarity: CardRarity.Bronze,
-  cost: 3,
+  name: 'Swampgasdrone',
+  slug: 'swampgasdrone',
+  rarity: CardRarity.Silver,
+  cost: 4,
   fraction: Fractions.Monsters,
-  description: descriptions.goblin,
+  description: descriptions.swampgasdrone,
   attributes: {
-    guilds: [Guilds.Goblin],
-    slots: {
-      count: 1,
-      canEquip: [ItemTypes.MeleeWeapon],
-    },
+    guilds: [Guilds.Insect],
     defence: 1,
-    health: 2,
     armor: 0,
+    health: 3,
+    damageType: DamageTypes.Poison,
     attacks: [
       {
         type: AttackTypes.Melee,
-        text: 'Strike',
+        text: 'Poison bite',
         cost: 1,
-        damage: 1,
+        damage: 2,
       },
     ],
   },
   effects: {
-    onPlay: [
+    onDeath: [
       {
         type: EffectTypes.Damage,
-        text: '[Deal 1 damage|damage] to one enemy unit.',
+        text: 'Spread [3 damage|damage] amog enemies.',
         targets: {
-          cardType: CardType.Unit,
           side: Sides.Enemies,
+          cardType: CardType.Unit,
         },
-        count: 1,
         value: 1,
+        count: 3,
+        random: {
+          repeat: true,
+        },
       },
     ],
   },

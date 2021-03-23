@@ -1,23 +1,23 @@
 import {
-  BaseTargets,
   Collections,
   Comparisons,
   Fractions,
   Guilds,
   ItemTypes,
+  Sides,
 } from './enums'
 
 export interface ConditionHasDefinition {
+  side: Sides
+  collection: Collections
+  comparison: Comparisons
   guild?: Guilds
   fraction?: Fractions
   itemType?: ItemTypes
   cardSlug?: string
   count?: number
-  comparison: Comparisons
 }
 export interface ConditionDefinition {
-  target: BaseTargets.Allies | BaseTargets.Enemies | BaseTargets.All
-  collection: Collections
   have?: ConditionHasDefinition
   notHave?: ConditionHasDefinition
   text?: string

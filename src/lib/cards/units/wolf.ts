@@ -1,53 +1,48 @@
 import { CardDefinition } from '../../definitions'
 import {
   AttackTypes,
+  BaseTargets,
   CardRarity,
   CardType,
   EffectTypes,
   Fractions,
   Guilds,
-  ItemTypes,
-  Sides,
 } from '../../enums'
 import descriptions from '../texts/units'
 
 const card: CardDefinition = {
   type: CardType.Unit,
-  name: 'Goblin',
-  slug: 'goblin',
+  name: 'Wolf',
+  slug: 'wolf',
   rarity: CardRarity.Bronze,
-  cost: 3,
+  cost: 4,
   fraction: Fractions.Monsters,
-  description: descriptions.goblin,
+  description: descriptions.wolf,
   attributes: {
-    guilds: [Guilds.Goblin],
-    slots: {
-      count: 1,
-      canEquip: [ItemTypes.MeleeWeapon],
-    },
+    guilds: [Guilds.Beast],
     defence: 1,
-    health: 2,
+    health: 3,
     armor: 0,
     attacks: [
       {
         type: AttackTypes.Melee,
-        text: 'Strike',
+        text: 'Bite',
         cost: 1,
-        damage: 1,
+        damage: 2,
       },
     ],
-  },
-  effects: {
-    onPlay: [
+    abilities: [
       {
-        type: EffectTypes.Damage,
-        text: '[Deal 1 damage|damage] to one enemy unit.',
-        targets: {
-          cardType: CardType.Unit,
-          side: Sides.Enemies,
+        cost: 1,
+        effect: {
+          type: EffectTypes.Eat,
+          text:
+            '[Damage|damage] allied [beast|highlight] by 1 and [boost|positive] self by 2',
+          targets: BaseTargets.Allies,
+          value: 2,
+          count: 1,
+          boost: 2,
         },
-        count: 1,
-        value: 1,
       },
     ],
   },

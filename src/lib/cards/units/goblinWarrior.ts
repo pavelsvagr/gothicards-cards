@@ -1,4 +1,4 @@
-import { CardDefinition } from '../../definitions'
+import { CardDefinition } from 'lib/definitions'
 import {
   AttackTypes,
   CardRarity,
@@ -8,32 +8,32 @@ import {
   Guilds,
   ItemTypes,
   Sides,
-} from '../../enums'
+} from 'lib/enums'
 import descriptions from '../texts/units'
 
 const card: CardDefinition = {
   type: CardType.Unit,
-  name: 'Goblin',
-  slug: 'goblin',
-  rarity: CardRarity.Bronze,
-  cost: 3,
   fraction: Fractions.Monsters,
-  description: descriptions.goblin,
+  name: 'Goblin Warrior',
+  slug: 'goblinWarrior',
+  cost: 5,
+  rarity: CardRarity.Silver,
+  description: descriptions.goblinWarrior,
   attributes: {
     guilds: [Guilds.Goblin],
     slots: {
-      count: 1,
-      canEquip: [ItemTypes.MeleeWeapon],
+      count: 2,
+      canEquip: [ItemTypes.MeleeWeapon, ItemTypes.Armor],
     },
     defence: 1,
-    health: 2,
     armor: 0,
+    health: 4,
     attacks: [
       {
         type: AttackTypes.Melee,
         text: 'Strike',
         cost: 1,
-        damage: 1,
+        damage: 2,
       },
     ],
   },

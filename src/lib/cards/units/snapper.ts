@@ -1,53 +1,54 @@
 import { CardDefinition } from '../../definitions'
 import {
   AttackTypes,
+  BaseTargets,
   CardRarity,
   CardType,
   EffectTypes,
   Fractions,
   Guilds,
-  ItemTypes,
   Sides,
 } from '../../enums'
 import descriptions from '../texts/units'
 
 const card: CardDefinition = {
   type: CardType.Unit,
-  name: 'Goblin',
-  slug: 'goblin',
+  name: 'Snapper',
+  slug: 'snapper',
   rarity: CardRarity.Bronze,
-  cost: 3,
+  cost: 6,
   fraction: Fractions.Monsters,
-  description: descriptions.goblin,
+  description: descriptions.snapper,
   attributes: {
-    guilds: [Guilds.Goblin],
-    slots: {
-      count: 1,
-      canEquip: [ItemTypes.MeleeWeapon],
-    },
-    defence: 1,
+    guilds: [Guilds.Beast],
+    defence: 2,
     health: 2,
     armor: 0,
     attacks: [
       {
         type: AttackTypes.Melee,
-        text: 'Strike',
-        cost: 1,
-        damage: 1,
+        text: 'Bite',
+        cost: 2,
+        damage: 3,
       },
     ],
   },
   effects: {
     onPlay: [
       {
-        type: EffectTypes.Damage,
-        text: '[Deal 1 damage|damage] to one enemy unit.',
-        targets: {
-          cardType: CardType.Unit,
-          side: Sides.Enemies,
+        type: EffectTypes.Boost,
+        text:
+          '[Boost|positive] self by number of allied [beasts|highlight] [(max by 5|energy)].',
+        targets: BaseTargets.Self,
+        value: {
+          each: {
+            side: Sides.Allies,
+            guilds: [Guilds.Beast],
+          },
+          amount: 1,
+          max: 5,
         },
         count: 1,
-        value: 1,
       },
     ],
   },
