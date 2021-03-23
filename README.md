@@ -11,7 +11,7 @@ and card properties are defined by Typescript interfaces.
 See [definitions.ts](./src/lib/definitions.ts) for more info.
 
 ## 🎨 Help, typos and new ideas
-Your recommendations for updates, fixes and LORE friendly cards are welcomed. 
+Your recommendations for updates, fixes and LORE friendly cards are welcome. 
 Please, use classic git flow with pull requests and issues.  
 
 
