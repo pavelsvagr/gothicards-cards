@@ -10,6 +10,7 @@ import {
   Signs,
 } from '../../enums'
 import descriptions from '../texts/units'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -37,7 +38,7 @@ const card: CardDefinition = {
     onDeath: [
       {
         type: EffectTypes.Energy,
-        text: '[Gain|energy] 1 energy.',
+        text: [{ text: 'Gain 1 energy', style: RichTextStyle.info }],
         side: Sides.Allies,
         amount: 1,
         sign: Signs.add,

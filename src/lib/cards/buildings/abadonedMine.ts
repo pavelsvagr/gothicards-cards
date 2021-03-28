@@ -10,10 +10,11 @@ import {
 } from '../../enums'
 import descriptions from '../texts/buildings'
 import { EFFECT_SELECTION } from '../../effects'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Building,
-  fraction: Fractions.Neutral,
+  fraction: Fractions.Monsters,
   name: 'Abandoned Mine',
   slug: 'abadonedMine',
   cost: 7,
@@ -28,13 +29,24 @@ const card: CardDefinition = {
     onPlay: [
       {
         type: EFFECT_SELECTION,
-        text:
-          '{[Select one:|energy]} ' +
-          '{[spawn|magic] minecrawler} ' +
-          '{[or|energy]} ' +
-          '{[spawn|magic] skeleton}' +
-          '{[or|energy]} ' +
-          '{[spawn|magic] digger.} ',
+        text: [
+          { text: 'Select one:', style: RichTextStyle.info, line: true },
+          {
+            text: [
+              { text: 'spawn', style: RichTextStyle.magic },
+              { text: 'minecrawler', card: 'minecrawler' },
+            ],
+            line: true,
+          },
+          { text: 'or', line: true },
+          {
+            text: [
+              { text: 'spawn', style: RichTextStyle.magic },
+              { text: 'skeleton', card: 'skeleton' },
+            ],
+            line: true,
+          },
+        ],
         effects: [
           {
             type: EffectTypes.Spawn,

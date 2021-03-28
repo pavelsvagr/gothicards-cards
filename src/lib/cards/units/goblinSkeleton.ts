@@ -10,6 +10,7 @@ import {
   ItemTypes,
 } from '../../enums'
 import descriptions from '../texts/units'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -41,7 +42,7 @@ const card: CardDefinition = {
     onPlay: [
       {
         type: EffectTypes.Boost,
-        text: '[Gain 4 health|positive]',
+        text: [{ text: 'Gain 4 health.', style: RichTextStyle.info }],
         targets: BaseTargets.Self,
         count: 1,
         value: 4,

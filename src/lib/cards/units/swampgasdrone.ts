@@ -10,6 +10,7 @@ import {
   Sides,
 } from '../../enums'
 import descriptions from '../texts/units'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -38,7 +39,10 @@ const card: CardDefinition = {
     onDeath: [
       {
         type: EffectTypes.Damage,
-        text: 'Spread [3 damage|damage] amog enemies.',
+        text: [
+          { text: 'Spread 3 damage', style: RichTextStyle.negative },
+          ' among enemies',
+        ],
         targets: {
           side: Sides.Enemies,
           cardType: CardType.Unit,

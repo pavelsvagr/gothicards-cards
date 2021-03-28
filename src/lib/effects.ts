@@ -27,7 +27,7 @@ export interface AttackDefinition {
   type: AttackTypes
   cost: number
   damage: number
-  text?: string
+  text?: string | any
 }
 
 /**
@@ -36,7 +36,7 @@ export interface AttackDefinition {
 export interface AbilityDefinition {
   cost: number
   effect: EffectDefinition
-  text?: string
+  text?: string | any
 }
 
 /**
@@ -78,7 +78,7 @@ export interface RandomDefinition {
 interface BaseEffect {
   type: EffectTypes | typeof EFFECT_COMBINATION | typeof EFFECT_SELECTION
   condition?: ConditionDefinition
-  text?: string
+  text?: string | any
 }
 
 interface TargetEffect extends BaseEffect {

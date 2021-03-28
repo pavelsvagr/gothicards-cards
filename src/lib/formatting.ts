@@ -7,3 +7,11 @@ export interface Quote {
   quote: string
   author: string
 }
+
+export enum RichTextStyle {
+  highlight = 'highlight',
+  positive = 'positive',
+  negative = 'negative',
+  magic = 'magic',
+  info = 'info',
+}

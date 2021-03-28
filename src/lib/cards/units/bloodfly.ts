@@ -9,6 +9,7 @@ import {
 } from '../../enums'
 import descriptions from '../texts/units'
 import { CardDefinition } from '../../definitions'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -36,7 +37,10 @@ const card: CardDefinition = {
     onTurnEnd: [
       {
         type: EffectTypes.Damage,
-        text: '[Deal 1 damage|damage] to one random enemy unit.',
+        text: [
+          { text: 'Deal 1 damage', style: RichTextStyle.negative },
+          ' to one random enemy unit.',
+        ],
         targets: BaseTargets.Enemies,
         count: 1,
         value: 1,

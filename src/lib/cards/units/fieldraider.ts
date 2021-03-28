@@ -10,6 +10,7 @@ import {
 } from '../../enums'
 import descriptions from '../texts/units'
 import { CardDefinition } from '../../definitions'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -37,7 +38,11 @@ const card: CardDefinition = {
     onPlay: [
       {
         type: EffectTypes.Energy,
-        text: 'You [gain 1 energy|positive].',
+        text: [
+          'You ',
+          { text: 'gain 1 energy', style: RichTextStyle.positive },
+          '.',
+        ],
         side: Sides.Allies,
         sign: Signs.add,
         amount: 1,
@@ -46,7 +51,11 @@ const card: CardDefinition = {
     onTurnEnd: [
       {
         type: EffectTypes.Energy,
-        text: 'Enemy [loses 1 energy|highlight].',
+        text: [
+          'Enemy ',
+          { text: 'loses 1 energy', style: RichTextStyle.highlight },
+          '.',
+        ],
         side: Sides.Enemies,
         sign: Signs.remove,
         amount: 1,

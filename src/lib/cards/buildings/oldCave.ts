@@ -10,6 +10,7 @@ import {
   StatusTypes,
 } from '../../enums'
 import descriptions from '../texts/buildings'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Building,
@@ -34,7 +35,12 @@ const card: CardDefinition = {
     onTurnEnd: [
       {
         type: EffectTypes.Boost,
-        text: 'When you play [goblin|highlight], [boost|positive] it by 1.',
+        text: [
+          'When you play ',
+          { text: 'goblin', style: RichTextStyle.highlight },
+          { text: ' boost', style: RichTextStyle.positive },
+          ' it by 1 ',
+        ],
         targets: {
           side: Sides.Allies,
           newCard: true,
@@ -45,7 +51,12 @@ const card: CardDefinition = {
       },
       {
         type: EffectTypes.Heal,
-        text: '[Heal|positive] random allied [beast|highlight] by 1.',
+        text: [
+          { text: 'Heal', style: RichTextStyle.positive },
+          ' random allied ',
+          { text: 'beast', style: RichTextStyle.highlight },
+          ' by 1',
+        ],
         targets: {
           side: Sides.Allies,
           guilds: [Guilds.Beast],

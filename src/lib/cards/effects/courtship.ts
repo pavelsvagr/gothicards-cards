@@ -8,6 +8,7 @@ import {
   Sides,
 } from '../../enums'
 import descriptions from '../texts/effects'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Effect,
@@ -19,7 +20,11 @@ const card: CardDefinition = {
   description: descriptions.courtship,
   effect: {
     type: EffectTypes.Spawn,
-    text: '[Spawn|magic] two [scavengers|highlight]',
+    text: [
+      { text: 'Spawn', style: RichTextStyle.magic },
+      ' two ',
+      { text: 'scavengers', cardRef: 'scavenger' },
+    ],
     side: Sides.Allies,
     spawn: scavenger,
     count: 2,

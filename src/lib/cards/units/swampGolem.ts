@@ -10,6 +10,7 @@ import {
 } from '../../enums'
 import descriptions from '../texts/units'
 import { COUNT_ALL } from '../../effects'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -37,7 +38,12 @@ const card: CardDefinition = {
     onPlay: [
       {
         type: EffectTypes.Boost,
-        text: '[Boost|positive] all [insect|highlight] units by 1.',
+        text: [
+          { text: 'Boost all', style: RichTextStyle.positive },
+          { text: ' insect', style: RichTextStyle.highlight },
+          ' units',
+          { text: ' by 1', style: RichTextStyle.positive },
+        ],
         targets: {
           side: Sides.Enemies,
           guilds: [Guilds.Insect],

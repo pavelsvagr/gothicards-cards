@@ -10,6 +10,7 @@ import {
 } from '../../enums'
 import descriptions from '../texts/units'
 import { COUNT_ALL } from '../../effects'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -37,7 +38,10 @@ const card: CardDefinition = {
     onPlay: [
       {
         type: EffectTypes.Boost,
-        text: '[Boost|positive] all other scavengers by 2.',
+        text: [
+          { text: 'Boost', style: RichTextStyle.positive },
+          'all other scavengers by 2',
+        ],
         targets: {
           cardSlug: 'scavenger',
           side: Sides.Allies,

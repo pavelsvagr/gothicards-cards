@@ -9,6 +9,7 @@ import {
   Guilds,
 } from '../../enums'
 import descriptions from '../texts/units'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -36,8 +37,11 @@ const card: CardDefinition = {
         cost: 1,
         effect: {
           type: EffectTypes.Eat,
-          text:
-            '[Damage|damage] allied [beast|highlight] by 1 and [boost|positive] self by 2',
+          text: [
+            { text: 'Damage', style: RichTextStyle.negative },
+            ' allied unit by 1 and ',
+            { text: 'boost self by 2', style: RichTextStyle.positive },
+          ],
           targets: BaseTargets.Allies,
           value: 2,
           count: 1,

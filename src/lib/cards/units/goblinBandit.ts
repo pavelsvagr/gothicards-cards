@@ -13,6 +13,7 @@ import {
 } from '../../enums'
 import descriptions from '../texts/units'
 import goblin from './goblin'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -51,8 +52,16 @@ const card: CardDefinition = {
       {
         type: EffectTypes.Spawn,
         spawn: goblin,
-        text:
-          '[If|energy] you control [1 or more other goblins|highlight], [summon|magic] goblin.',
+        text: [
+          { text: 'If', style: RichTextStyle.info },
+          'you control ',
+          {
+            text: 'one or more other goblins ',
+            style: RichTextStyle.highlight,
+          },
+          { text: 'summon', style: RichTextStyle.magic },
+          { text: 'goblin', cardRef: 'goblin' },
+        ],
         side: Sides.Allies,
         count: 1,
         condition: {

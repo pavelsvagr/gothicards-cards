@@ -10,6 +10,7 @@ import {
   Sides,
 } from 'lib/enums'
 import descriptions from '../texts/units'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -41,7 +42,10 @@ const card: CardDefinition = {
     onPlay: [
       {
         type: EffectTypes.Damage,
-        text: '[Deal 1 damage|damage] to one enemy unit.',
+        text: [
+          { text: 'Deal 1 damage', style: RichTextStyle.negative },
+          ' to one enemy unit.',
+        ],
         targets: {
           cardType: CardType.Unit,
           side: Sides.Enemies,

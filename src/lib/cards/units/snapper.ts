@@ -10,6 +10,7 @@ import {
   Sides,
 } from '../../enums'
 import descriptions from '../texts/units'
+import { RichTextStyle } from '../../formatting'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -37,8 +38,14 @@ const card: CardDefinition = {
     onPlay: [
       {
         type: EffectTypes.Boost,
-        text:
-          '[Boost|positive] self by number of allied [beasts|highlight] [(max by 5|energy)].',
+        text: [
+          { text: 'Boost', style: RichTextStyle.positive },
+          ' self by number of allied ',
+          { text: 'beasts', style: RichTextStyle.highlight },
+          '(',
+          { text: 'max by 5', style: RichTextStyle.info },
+          ')',
+        ],
         targets: BaseTargets.Self,
         value: {
           each: {
