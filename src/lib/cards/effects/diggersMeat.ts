@@ -7,7 +7,7 @@ import {
 } from '../../enums'
 import descriptions from '../texts/effects'
 import { CardDefinition } from '../../definitions'
-import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
 
 const card: CardDefinition = {
   type: CardType.Effect,
@@ -19,10 +19,7 @@ const card: CardDefinition = {
   description: descriptions.diggersMeat,
   effect: {
     type: EffectTypes.Boost,
-    text: [
-      { text: 'Boost an allied unit', style: RichTextStyle.info },
-      ' one allied unit by 2',
-    ],
+    text: [richText.getKeyword(Keywords.Boost), ' one allied unit by 2'],
     value: 2,
     targets: BaseTargets.Allies,
     count: 1,

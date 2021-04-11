@@ -11,6 +11,8 @@ import {
 import descriptions from '../texts/buildings'
 import { EFFECT_SELECTION } from '../../effects'
 import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
+import { capitalize } from 'lodash'
 
 const card: CardDefinition = {
   type: CardType.Building,
@@ -33,7 +35,7 @@ const card: CardDefinition = {
           { text: 'Select one:', style: RichTextStyle.info, line: true },
           {
             text: [
-              { text: 'spawn', style: RichTextStyle.magic },
+              richText.getKeyword(Keywords.Spawn, { fn: capitalize }),
               { text: 'minecrawler', card: 'minecrawler' },
             ],
             line: true,
@@ -41,7 +43,7 @@ const card: CardDefinition = {
           { text: 'or', line: true },
           {
             text: [
-              { text: 'spawn', style: RichTextStyle.magic },
+              richText.getKeyword(Keywords.Spawn, { fn: capitalize }),
               { text: 'skeleton', card: 'skeleton' },
             ],
             line: true,

@@ -10,7 +10,8 @@ import {
   ItemTypes,
 } from '../../enums'
 import descriptions from '../texts/units'
-import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
+import { capitalize } from 'lodash'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -42,7 +43,10 @@ const card: CardDefinition = {
     onPlay: [
       {
         type: EffectTypes.Boost,
-        text: [{ text: 'Gain 4 health.', style: RichTextStyle.info }],
+        text: [
+          richText.getKeyword(Keywords.Gain, { fn: capitalize }),
+          ' 4 health',
+        ],
         targets: BaseTargets.Self,
         count: 1,
         value: 4,

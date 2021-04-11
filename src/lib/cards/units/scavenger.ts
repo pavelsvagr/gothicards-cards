@@ -11,6 +11,8 @@ import {
 import descriptions from '../texts/units'
 import { COUNT_ALL } from '../../effects'
 import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
+import { capitalize } from 'lodash'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -39,8 +41,8 @@ const card: CardDefinition = {
       {
         type: EffectTypes.Boost,
         text: [
-          { text: 'Boost', style: RichTextStyle.positive },
-          'all other scavengers by 2',
+          richText.getKeyword(Keywords.Boost, { fn: capitalize }),
+          ' all other scavengers by 2',
         ],
         targets: {
           cardSlug: 'scavenger',

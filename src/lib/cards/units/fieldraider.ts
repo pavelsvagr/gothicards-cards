@@ -10,7 +10,7 @@ import {
 } from '../../enums'
 import descriptions from '../texts/units'
 import { CardDefinition } from '../../definitions'
-import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -40,7 +40,9 @@ const card: CardDefinition = {
         type: EffectTypes.Energy,
         text: [
           'You ',
-          { text: 'gain 1 energy', style: RichTextStyle.positive },
+          richText.getKeyword(Keywords.Gain),
+          ' 1 ',
+          richText.getKeyword(Keywords.Energy),
           '.',
         ],
         side: Sides.Allies,
@@ -53,7 +55,9 @@ const card: CardDefinition = {
         type: EffectTypes.Energy,
         text: [
           'Enemy ',
-          { text: 'loses 1 energy', style: RichTextStyle.highlight },
+          richText.getKeyword(Keywords.Loses),
+          ' 1 ',
+          richText.getKeyword(Keywords.Energy),
           '.',
         ],
         side: Sides.Enemies,

@@ -11,6 +11,8 @@ import {
 import descriptions from '../texts/units'
 import { COUNT_ALL } from '../../effects'
 import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
+import { capitalize } from 'lodash'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -39,10 +41,10 @@ const card: CardDefinition = {
       {
         type: EffectTypes.Boost,
         text: [
-          { text: 'Boost all', style: RichTextStyle.positive },
-          { text: ' insect', style: RichTextStyle.highlight },
-          ' units',
-          { text: ' by 1', style: RichTextStyle.positive },
+          richText.getKeyword(Keywords.Boost, { fn: capitalize }),
+          ' all allied ',
+          richText.getGuild(Guilds.Insect),
+          ' units by 1.',
         ],
         targets: {
           side: Sides.Enemies,

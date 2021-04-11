@@ -11,7 +11,7 @@ import {
 } from 'lib/enums'
 import descriptions from '../texts/units'
 import { COUNT_ALL } from '../../effects'
-import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -44,10 +44,10 @@ const card: CardDefinition = {
       {
         type: EffectTypes.Boost,
         text: [
-          { text: 'Boost', style: RichTextStyle.positive },
+          richText.getKeyword(Keywords.Boost),
           ' all allied ',
-          { text: 'goblins', style: RichTextStyle.highlight },
-          ' by 1.',
+          richText.getGuild(Guilds.Goblin),
+          ' units by 1.',
         ],
         targets: {
           guilds: [Guilds.Goblin],

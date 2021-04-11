@@ -8,7 +8,8 @@ import {
   Sides,
 } from '../../enums'
 import descriptions from '../texts/effects'
-import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
+import { capitalize } from 'lodash'
 
 const card: CardDefinition = {
   type: CardType.Effect,
@@ -21,7 +22,7 @@ const card: CardDefinition = {
   effect: {
     type: EffectTypes.Spawn,
     text: [
-      { text: 'Spawn', style: RichTextStyle.magic },
+      richText.getKeyword(Keywords.Spawn, { fn: capitalize }),
       ' two ',
       { text: 'scavengers', cardRef: 'scavenger' },
     ],

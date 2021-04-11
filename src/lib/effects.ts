@@ -1,5 +1,6 @@
 import {
   AttackTypes,
+  BaseTargets,
   CardType,
   Collections,
   EffectTypes,
@@ -8,10 +9,10 @@ import {
   ItemTypes,
   Sides,
   Signs,
-  BaseTargets,
 } from './enums'
 import { CardDefinition } from './definitions'
 import { ConditionDefinition } from './conditions'
+import { RichTextJson } from 'json-rt'
 
 export const EFFECT_COMBINATION = 'combination'
 export const EFFECT_SELECTION = 'selection'
@@ -78,7 +79,7 @@ export interface RandomDefinition {
 interface BaseEffect {
   type: EffectTypes | typeof EFFECT_COMBINATION | typeof EFFECT_SELECTION
   condition?: ConditionDefinition
-  text?: string | any
+  text?: string | RichTextJson
 }
 
 interface TargetEffect extends BaseEffect {

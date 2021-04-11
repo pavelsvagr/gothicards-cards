@@ -7,7 +7,7 @@ import {
   Guilds,
   ItemTypes,
 } from './enums'
-import { Quote } from './formatting'
+import { Quote, RichText } from './formatting'
 import { Status } from './statuses'
 import {
   AbilityDefinition,
@@ -21,7 +21,7 @@ interface BaseCardDefinition {
   name: string
   rarity: CardRarity
   cost: number
-  description: string | Quote
+  description: string | Quote | RichText
   fraction: Fractions
 }
 

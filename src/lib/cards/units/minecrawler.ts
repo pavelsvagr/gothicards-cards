@@ -10,7 +10,8 @@ import {
   Signs,
 } from '../../enums'
 import descriptions from '../texts/units'
-import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
+import { capitalize } from 'lodash'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -38,7 +39,12 @@ const card: CardDefinition = {
     onDeath: [
       {
         type: EffectTypes.Energy,
-        text: [{ text: 'Gain 2 energy', style: RichTextStyle.info }],
+        text: [
+          richText.getKeyword(Keywords.Gain, { fn: capitalize }),
+          ' 2 ',
+          richText.getKeyword(Keywords.Energy),
+          '.',
+        ],
         side: Sides.Allies,
         amount: 2,
         sign: Signs.add,

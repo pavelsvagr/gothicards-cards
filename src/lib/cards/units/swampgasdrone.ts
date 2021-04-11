@@ -10,7 +10,8 @@ import {
   Sides,
 } from '../../enums'
 import descriptions from '../texts/units'
-import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
+import { capitalize } from 'lodash'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -40,8 +41,8 @@ const card: CardDefinition = {
       {
         type: EffectTypes.Damage,
         text: [
-          { text: 'Spread 3 damage', style: RichTextStyle.negative },
-          ' among enemies',
+          richText.getKeyword(Keywords.Spread, { fn: capitalize }),
+          ' 3 damage among enemies',
         ],
         targets: {
           side: Sides.Enemies,

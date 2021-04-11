@@ -9,7 +9,8 @@ import {
   Guilds,
 } from '../../enums'
 import descriptions from '../texts/units'
-import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
+import { capitalize } from 'lodash'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -38,9 +39,10 @@ const card: CardDefinition = {
         effect: {
           type: EffectTypes.Eat,
           text: [
-            { text: 'Damage', style: RichTextStyle.negative },
+            richText.getKeyword(Keywords.Damage, { fn: capitalize }),
             ' allied unit by 1 and ',
-            { text: 'boost self by 2', style: RichTextStyle.positive },
+            richText.getKeyword(Keywords.Boost, { fn: capitalize }),
+            ' self by 2.',
           ],
           targets: BaseTargets.Allies,
           value: 2,

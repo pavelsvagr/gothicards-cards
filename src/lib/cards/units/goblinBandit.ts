@@ -13,7 +13,8 @@ import {
 } from '../../enums'
 import descriptions from '../texts/units'
 import goblin from './goblin'
-import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
+import { capitalize } from 'lodash'
 
 const card: CardDefinition = {
   type: CardType.Unit,
@@ -53,13 +54,11 @@ const card: CardDefinition = {
         type: EffectTypes.Spawn,
         spawn: goblin,
         text: [
-          { text: 'If', style: RichTextStyle.info },
-          'you control ',
-          {
-            text: 'one or more other goblins ',
-            style: RichTextStyle.highlight,
-          },
-          { text: 'summon', style: RichTextStyle.magic },
+          richText.getKeyword(Keywords.If, { fn: capitalize }),
+          ' you control one or more ',
+          richText.getGuild(Guilds.Goblin),
+          ' units ',
+          richText.getKeyword(Keywords.Spawn),
           { text: 'goblin', cardRef: 'goblin' },
         ],
         side: Sides.Allies,

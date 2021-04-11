@@ -8,7 +8,7 @@ import {
 import { EFFECT_COMBINATION } from '../../effects'
 import { CardDefinition } from '../../definitions'
 import descriptions from '../texts/effects'
-import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
 
 const card: CardDefinition = {
   type: CardType.Effect,
@@ -21,9 +21,10 @@ const card: CardDefinition = {
   effect: {
     type: EFFECT_COMBINATION,
     text: [
-      { text: 'Heal one allied unit by 2', style: RichTextStyle.info },
-      ' and ',
-      { text: 'boost it by 1', style: RichTextStyle.info },
+      richText.getKeyword(Keywords.Heal),
+      ' one allied unit by 2 and ',
+      richText.getKeyword(Keywords.Boost),
+      ' it by 1',
     ],
     targets: BaseTargets.Allies,
     count: 1,

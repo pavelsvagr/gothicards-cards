@@ -1,11 +1,19 @@
+import { RichTextBlock, RichTextJson } from 'json-rt'
+
 export enum TextType {
   Quote,
+  RichText,
 }
 
 export interface Quote {
   type: TextType.Quote
   quote: string
   author: string
+}
+
+export interface RichText {
+  type: TextType.RichText
+  text: RichTextJson
 }
 
 export enum RichTextStyle {

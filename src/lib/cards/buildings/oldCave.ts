@@ -10,7 +10,8 @@ import {
   StatusTypes,
 } from '../../enums'
 import descriptions from '../texts/buildings'
-import { RichTextStyle } from '../../formatting'
+import { Keywords, richText } from '../../richText'
+import { capitalize } from 'lodash'
 
 const card: CardDefinition = {
   type: CardType.Building,
@@ -37,8 +38,8 @@ const card: CardDefinition = {
         type: EffectTypes.Boost,
         text: [
           'When you play ',
-          { text: 'goblin', style: RichTextStyle.highlight },
-          { text: ' boost', style: RichTextStyle.positive },
+          richText.getGuild(Guilds.Goblin),
+          richText.getKeyword(Keywords.Boost),
           ' it by 1 ',
         ],
         targets: {
@@ -52,9 +53,9 @@ const card: CardDefinition = {
       {
         type: EffectTypes.Heal,
         text: [
-          { text: 'Heal', style: RichTextStyle.positive },
+          richText.getKeyword(Keywords.Heal, { fn: capitalize }),
           ' random allied ',
-          { text: 'beast', style: RichTextStyle.highlight },
+          richText.getGuild(Guilds.Beast),
           ' by 1',
         ],
         targets: {
