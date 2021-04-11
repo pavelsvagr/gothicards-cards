@@ -1,4 +1,4 @@
-import { RichTextBlock, RichTextJson } from 'json-rt'
+import { RichTextJson } from 'json-rt'
 
 export enum TextType {
   Quote,

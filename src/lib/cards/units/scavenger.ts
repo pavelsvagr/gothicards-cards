@@ -10,7 +10,6 @@ import {
 } from '../../enums'
 import descriptions from '../texts/units'
 import { COUNT_ALL } from '../../effects'
-import { RichTextStyle } from '../../formatting'
 import { Keywords, richText } from '../../richText'
 import { capitalize } from 'lodash'
 
